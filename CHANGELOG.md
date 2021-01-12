@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/rohanremo/automated-release-notes/compare/v3.1.6...v3.2.0) (2021-01-12)
+
+
+### Product Updates
+
+* not really feat but update versionrc ([6ade38e](https://github.com/rohanremo/automated-release-notes/commit/6ade38e677e95c129d5ecddab5673310d8d407d3))
+
 ### [3.1.6](https://github.com/rohanremo/automated-release-notes/compare/v3.1.4...v3.1.6) (2021-01-12)
 
 ### [3.1.4](https://github.com/rohanremo/automated-release-notes/compare/v3.1.3...v3.1.4) (2021-01-12)

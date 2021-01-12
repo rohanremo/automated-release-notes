@@ -1,6 +1,5 @@
 {
   "name": "automated-release-notes",
-  "version": "3.1.4",
   "description": "testing automated changelogs",
   "main": "index.js",
   "scripts": {

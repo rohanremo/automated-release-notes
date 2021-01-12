@@ -1,0 +1,31 @@
+{
+  "name": "automated-release-notes",
+  "version": "3.1.1",
+  "description": "testing automated changelogs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohanremo/automated-release-notes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rohanremo/automated-release-notes/issues"
+  },
+  "homepage": "https://github.com/rohanremo/automated-release-notes#readme",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "husky": "^4.3.7",
+    "standard-version": "^9.1.0"
+  },
+  "dependencies": {}
+}

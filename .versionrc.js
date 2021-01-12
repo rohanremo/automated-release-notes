@@ -8,5 +8,6 @@ module.exports = {
     {"type": "refactor", "hidden": true},
     {"type": "perf", "hidden": true},
     {"type": "test", "hidden": true}
-  ]
+  ],
+  bumpFiles: [],
 }

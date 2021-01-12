@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [3.2.4](https://github.com/rohanremo/automated-release-notes/compare/v3.3.0...v3.2.4) (2021-01-12)
 
+### [3.2.4](https://github.com/rohanremo/automated-release-notes/compare/v3.3.0...v3.2.4) (2021-01-12)
+
 ## [3.3.0](https://github.com/rohanremo/automated-release-notes/compare/v4.0.0...v3.3.0) (2021-01-12)
 
 ## [4.0.0](https://github.com/rohanremo/automated-release-notes/compare/v3.2.4...v4.0.0) (2021-01-12)

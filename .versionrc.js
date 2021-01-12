@@ -9,5 +9,5 @@ module.exports = {
     {"type": "perf", "hidden": true},
     {"type": "test", "hidden": true}
   ],
-  bumpFiles: [],
+  bumpFiles: []
 }

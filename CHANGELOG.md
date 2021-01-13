@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.4](https://github.com/rohanremo/automated-release-notes/compare/v3.2.3...v3.2.4) (2021-01-12)
+
+
+### Internal Updates
+
+* remove bumpfiles ([660a17f](https://github.com/rohanremo/automated-release-notes/commit/660a17f47667742645ccd8d673bce1c824a89902))
+* update re remove bumpfiles ([478e4d1](https://github.com/rohanremo/automated-release-notes/commit/478e4d102e2cd05836b6c689d097561526e1c293))
+
+## [4.0.0](https://github.com/rohanremo/automated-release-notes/compare/v3.3.0...v4.0.0) (2021-01-12)
+
+### [3.2.4](https://github.com/rohanremo/automated-release-notes/compare/v3.3.0...v3.2.4) (2021-01-12)
+
+### [3.2.4](https://github.com/rohanremo/automated-release-notes/compare/v3.3.0...v3.2.4) (2021-01-12)
+
+## [3.3.0](https://github.com/rohanremo/automated-release-notes/compare/v4.0.0...v3.3.0) (2021-01-12)
+
+## [4.0.0](https://github.com/rohanremo/automated-release-notes/compare/v3.2.4...v4.0.0) (2021-01-12)
+
+### [3.2.4](https://github.com/rohanremo/automated-release-notes/compare/v3.2.3...v3.2.4) (2021-01-12)
+
+
+### Internal Updates
+
+* remove bumpfiles ([660a17f](https://github.com/rohanremo/automated-release-notes/commit/660a17f47667742645ccd8d673bce1c824a89902))
+
 ### [3.2.3](https://github.com/rohanremo/automated-release-notes/compare/v3.2.2...v3.2.3) (2021-01-12)
 
 ### [3.2.2](https://github.com/rohanremo/automated-release-notes/compare/v3.2.1...v3.2.2) (2021-01-12)

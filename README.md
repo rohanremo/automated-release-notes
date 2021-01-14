@@ -3,4 +3,4 @@ Testing automated changelogs
 updated text, 1, 2
 
 
-3
+3, 4

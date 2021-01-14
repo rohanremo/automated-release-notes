@@ -1,3 +1,3 @@
 Testing automated changelogs
 
-updated text
+updated text, 1

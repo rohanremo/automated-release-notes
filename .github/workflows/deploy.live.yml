@@ -1,0 +1,43 @@
+# Deploys new build in live
+name: Deploy PR to live (test)
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  PreBuildLive:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    strategy:
+      # setting this flag so even if one job fails, others will continue
+      fail-fast: false
+      matrix:
+        directory: ['deployment']
+    steps:
+      # print Workflow parameters
+      - name: Print workflow parameters
+        run: |
+          echo "Environment: live"
+          echo "github token": ${{ secrets.GITHUB_TOKEN }}
+
+      - run: npm ci
+
+  # This workflow contains a single job called "DeployLive"
+  DeployLive:
+    needs: PreBuildLive
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    strategy:
+      # setting this flag so even if one job fails, others will continue
+      fail-fast: false
+      matrix:
+        directory: ['client']
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Generate release notes
+        run: npm run release
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master

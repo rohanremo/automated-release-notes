@@ -16,6 +16,20 @@ All notable changes to this project will be documented in this file. See [standa
 * remove bumpfiles ([660a17f](https://github.com/rohanremo/automated-release-notes/commit/660a17f47667742645ccd8d673bce1c824a89902))
 * simplify github action ([d0dfaf7](https://github.com/rohanremo/automated-release-notes/commit/d0dfaf7fc72486c80461ee6f21a55cc42f5855a0))
 
+## [3.3.0](https://github.com/rohanremo/automated-release-notes/compare/v3.2.2...v3.3.0) (2021-01-15)
+
+
+### Product Updates
+
+* this is feature 3 squashed ([b4d24e5](https://github.com/rohanremo/automated-release-notes/commit/b4d24e582000875787ac84c4c58bbd8378ba62a3))
+
+
+### Internal Updates
+
+* add regex ([bf01248](https://github.com/rohanremo/automated-release-notes/commit/bf012484fa978a4ad69f271554ac12a8d510c684))
+* remove bumpfiles ([660a17f](https://github.com/rohanremo/automated-release-notes/commit/660a17f47667742645ccd8d673bce1c824a89902))
+* simplify github action ([d0dfaf7](https://github.com/rohanremo/automated-release-notes/commit/d0dfaf7fc72486c80461ee6f21a55cc42f5855a0))
+
 ### [3.2.3](https://github.com/rohanremo/automated-release-notes/compare/v3.2.2...v3.2.3) (2021-01-14)
 
 

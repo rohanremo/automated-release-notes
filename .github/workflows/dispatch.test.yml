@@ -3,15 +3,15 @@
 
 name: Test Dispatch
 
-on:
+on: 
   workflow_dispatch:
     inputs:
-      release_tag:
-        description: 'Enter release tag number'
+      logLevel:
+        description: 'Log level'     
         required: true
-      passcode:
-        description: 'Enter passcode'
-        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'  
 
 jobs:
   build:

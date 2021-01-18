@@ -3,10 +3,15 @@ name: Deploy PR to live (test)
 
 on:
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Enter release tag number (enter current to bump version)'
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  PreBuildLive:
+  # This workflow contains a single job called "DeployLive"
+  ChangeLog:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     strategy:
@@ -14,28 +19,23 @@ jobs:
       fail-fast: false
       matrix:
         directory: ['deployment']
-    steps:
-      # print Workflow parameters
-      - name: Print workflow parameters
-        run: |
-          echo "Environment: live"
-          echo "github token": ${{ secrets.GITHUB_TOKEN }}
-
-      - run: npm ci
-
-  # This workflow contains a single job called "DeployLive"
-  DeployLive:
-    needs: PreBuildLive
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    strategy:
-      # setting this flag so even if one job fails, others will continue
-      fail-fast: false
-      matrix:
-        directory: ['client']
 
     # Steps represent a sequence of tasks that will be executed as part of the job
+    # If latest, bump version
     steps:
+      - name: Install
+        - run: npm ci
+      - name: Validate version
+        run: |
+          pwd
+          version=$(grep -E version ./package.json -m 1 | cut -c 15-19)
+          echo $version
+          if [[ ${{github.event.inputs.release_tag}} !=  $version ]]; then
+            echo 'Versions not matching!';
+            exit 1
+          else
+            echo 'Latest version selected!!';
+          fi
       - name: Generate release notes
         run: npm run release
 

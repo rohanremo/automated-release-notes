@@ -26,12 +26,14 @@ jobs:
       - name: Install
         run: npm ci
       - name: Validate version
+        with:
+          ref: v${{github.event.inputs.release_tag}}
         run: |
           pwd
           version=$(grep -E version ./package.json -m 1 | cut -c 15-19)
           echo $version
           if [[ ${{github.event.inputs.release_tag}} !=  $version ]]; then
-            echo 'Versions not matching!';
+            echo 'Previous version selected, continuing without changelog!';
             exit 1
           else
             echo 'Latest version selected!!';

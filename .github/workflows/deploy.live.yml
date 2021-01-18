@@ -23,8 +23,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     # If latest, bump version
     steps:
-      - name: Install
-        run: npm ci
+      - run: npm ci
+
       - name: Validate version
         with:
           ref: v${{github.event.inputs.release_tag}}

@@ -25,24 +25,3 @@ jobs:
     steps:
       - run: npm ci
 
-      - name: Validate version
-        with:
-          ref: v${{github.event.inputs.release_tag}}
-        run: |
-          pwd
-          version=$(grep -E version ./package.json -m 1 | cut -c 15-19)
-          echo $version
-          if [[ ${{github.event.inputs.release_tag}} !=  $version ]]; then
-            echo 'Previous version selected, continuing without changelog!';
-            exit 1
-          else
-            echo 'Latest version selected!!';
-          fi
-      - name: Generate release notes
-        run: npm run release
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master

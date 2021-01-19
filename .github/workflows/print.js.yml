@@ -36,7 +36,7 @@ jobs:
       - id: release_tag
         run: |
           current_release_tag=$(grep -E -m 1 "version" package.json | cut -c 15-20 | rev | cut -c 2- | rev)
-          if [[ ${current_release_tag} != ${{github.event.inputs.release_tag}}]]; then
+          if [[ ${current_release_tag} != ${{github.event.inputs.release_tag}} ]]; then
             echo 'Proceeding with user selected release tag';
             echo "##[set-output name=number;]$(echo ${{github.event.inputs.release_tag}})";
             exit 1

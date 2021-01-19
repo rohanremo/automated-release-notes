@@ -34,5 +34,6 @@ jobs:
         with:
           ref: master
       - run: |
-          pwd
-          ls -la
+          echo "Current version:"
+          grep -E -m 1 "version" package.json | cut -c 14-20 | rev | cut -c 2- | rev
+

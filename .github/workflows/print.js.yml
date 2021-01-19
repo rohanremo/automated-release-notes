@@ -46,7 +46,9 @@ jobs:
           fi
       - name: Generate release notes
         run: |
-          npx standard-version
+          git config --global user.email "releasenotes@remo.co"
+          git config --global user.name "Release Notes"
+          npx standard-version --no-verify
           echo "completed script";
           ls -la
           git log -10 HEAD

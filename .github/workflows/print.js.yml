@@ -1,0 +1,38 @@
+# Deploys new build in live
+name: Print package.json
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Enter release tag number'
+        required: true
+      passcode:
+        description: 'Enter passcode'
+        required: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# 1. get current version from package.json
+# 2. check release_tag match
+# 3. if match, run release script and merge commit
+# 4. if no match, continue to PreBuildLive
+jobs:
+  ChangeLogAlpha:
+    runs-on: ubuntu-latest
+    strategy:
+      # setting this flag so even if one job fails, others will continue
+      fail-fast: false
+
+      
+    # outputs:
+    #   release_tag: ${{steps.release_tag.output.number}}
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE with selected branch, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+      - run: |
+          pwd
+          ls -la

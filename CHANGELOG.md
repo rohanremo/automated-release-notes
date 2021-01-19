@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### 3.2.3 (2021-01-19)
 
+
+### Internal Updates
+
+* output bumped release tag ([4da5cba](https://github.com/rohanremo/automated-release-notes/commit/4da5cbadbe348834846feefe1198cfdf0604b1eb))
+
+### 3.2.3 (2021-01-19)
+
 ### 3.2.3 (2021-01-19)
 
 ## [3.3.0](https://github.com/rohanremo/automated-release-notes/compare/v3.2.2...v3.3.0) (2021-01-15)

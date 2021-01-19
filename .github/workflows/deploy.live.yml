@@ -17,11 +17,28 @@ jobs:
     strategy:
       # setting this flag so even if one job fails, others will continue
       fail-fast: false
-      matrix:
-        directory: ['deployment']
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     # If latest, bump version
     steps:
-      - run: npm ci
+      - name: Install
+        - run: npm ci
+      - name: Validate version
+        run: |
+          pwd
+          version=$(grep -E version ./package.json -m 1 | cut -c 15-19)
+          echo $version
+          if [[ ${{github.event.inputs.release_tag}} !=  $version ]]; then
+            echo 'Versions not matching!';
+            exit 1
+          else
+            echo 'Latest version selected!!';
+          fi
+      - name: Generate release notes
+        run: npm run release
 
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master

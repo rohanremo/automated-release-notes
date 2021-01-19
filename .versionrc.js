@@ -9,5 +9,8 @@ module.exports = {
     {"type": "perf", "hidden": true},
     {"type": "test", "hidden": true}
   ],
-  bumpFiles: [],
+  bumpFiles: [
+    { filename: "package.json", type: "json"},
+    { filename: "package-lock.json", type: "json"}
+  ],
 }

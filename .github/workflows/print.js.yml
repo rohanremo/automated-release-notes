@@ -26,6 +26,7 @@ jobs:
       fail-fast: false
     outputs:
       release_tag: ${{steps.release_tag.output.number}}
+      fruit: ${{steps.release_tag.output.fruit}}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE with selected branch, so your job can access it
       - uses: actions/checkout@v2
@@ -48,10 +49,14 @@ jobs:
             bumped_release_tag=$(grep -m 1 -E "version" package.json | cut -c 15- | rev | cut -c 3- | rev)
             echo $bumped_release_tag
             echo "##[set-output name=number;]$(echo $bumped_release_tag)";
+            echo "##[set-output name=fruit;]$(echo "strawberry")";
           fi
   DeployLive:
     needs: ChangeLogAlpha
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{needs.ChangeLogAlpha.outputs.release_tag}}
+      - run: |
+        echo "Outputs:"
+        echo ${{needs.ChangeLogAlpha.outputs.release_tag}}
+        echo ${{needs.ChangeLogAlpha.outputs.fruit}}
           

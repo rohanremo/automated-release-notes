@@ -17,8 +17,6 @@ jobs:
     strategy:
       # setting this flag so even if one job fails, others will continue
       fail-fast: false
-      matrix:
-        directory: ['deployment']
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     # If latest, bump version

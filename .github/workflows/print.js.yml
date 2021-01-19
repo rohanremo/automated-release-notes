@@ -52,4 +52,5 @@ jobs:
           echo "completed script";
           ls -la
           git log -10 HEAD
+          git push --follow-tags origin master
 

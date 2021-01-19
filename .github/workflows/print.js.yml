@@ -55,8 +55,8 @@ jobs:
     needs: ChangeLogAlpha
     runs-on: ubuntu-latest
     steps:
-      - run: |
-        echo "Outputs:"
-        echo ${{needs.ChangeLogAlpha.outputs.release_tag}}
-        echo ${{needs.ChangeLogAlpha.outputs.fruit}}
-          
+      - name: print outputs
+        run: |
+          echo "Outputs:"
+          echo ${{needs.ChangeLogAlpha.outputs.release_tag}}
+          echo ${{needs.ChangeLogAlpha.outputs.fruit}}     

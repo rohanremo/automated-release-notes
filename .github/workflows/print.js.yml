@@ -46,7 +46,8 @@ jobs:
           fi
       - name: Generate release notes
         run: |
-          npm run release
+          npx standard-version
           echo "completed script";
           ls -la
+          git log -10 HEAD
 

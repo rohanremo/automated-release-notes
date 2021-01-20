@@ -53,10 +53,12 @@ jobs:
           echo "Logging prev step output"
           echo "The selected release_tag is ${{ steps.release_tag.outputs.release_tag }}"
   DeployLive:
-    if: always()
     needs: ChangeLogAlpha
     runs-on: ubuntu-latest
     steps:
       - run: |
           echo "Outputs:"
+          echo ${{needs.ChangeLogAlpha.outputs.release_tag}}
+          echo ${{ needs.ChangeLogAlpha.outputs.release_tag }}
+          echo "${{needs.ChangeLogAlpha.outputs.release_tag}}"
           echo "${{needs.ChangeLogAlpha.outputs.release_tag}}"

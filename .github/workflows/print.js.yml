@@ -1,5 +1,5 @@
 # Deploys new build in live
-name: Print package.json
+name: Generate release notes
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -26,7 +26,6 @@ jobs:
       fail-fast: false
     outputs:
       release_tag: ${{ steps.release_tag.output.number }}
-      fruit: ${{ steps.release_tag.output.fruit }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE with selected branch, so your job can access it
       - uses: actions/checkout@v2
@@ -44,14 +43,15 @@ jobs:
             git config --global user.email "noreply@remo.co"
             git config --global user.name "Release Notes"
             npx standard-version --no-verify
-            git log -10 HEAD
             git push --follow-tags origin master
             bumped_release_tag=$(grep -m 1 -E "version" package.json | cut -c 15- | rev | cut -c 3- | rev)
             echo "New Release Tag: $bumped_release_tag"
             echo "::set-output name=number::$(echo ${bumped_release_tag})"
-            fruit="strawberry"
-            echo "##[set-output name=fruit;]$(echo ${fruit})"
           fi
+      - name: Log output
+        run: |
+          echo "Logging prev step output"
+          echo ${{ steps.release_tag.outputs.release_tag }}
   DeployLive:
     if: always()
     needs: ChangeLogAlpha
@@ -60,7 +60,5 @@ jobs:
       - run: |
           echo "Outputs:"
           echo ${{needs.ChangeLogAlpha.outputs.release_tag}}
-          echo ${{needs.ChangeLogAlpha.outputs.fruit}}
-          echo "${{needs.ChangeLogAlpha.outputs.fruit}}"
           echo "$(echo ${{ needs.ChangeLogAlpha.outputs.release_tag }})"
 

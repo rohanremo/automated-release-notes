@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.5.0 (2021-01-20)
+
+
+### Internal Updates
+
+* change runs-on order ([437982f](https://github.com/rohanremo/automated-release-notes/commit/437982fa7021204a12cd4514a45f2cbdff4233d3))
+
 ## 3.4.0 (2021-01-20)
 
 

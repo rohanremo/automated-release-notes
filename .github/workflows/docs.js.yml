@@ -21,7 +21,10 @@ jobs:
     - id: step1
       run: echo "::set-output name=test::hello"
     - id: step2
-      run: echo "::set-output name=test::world"
+      run: |
+        bumped_release_tag="4.1.1"
+        echo "::set-output name=test::$bumped_release_tag"
+        echo "New Release Tag: $bumped_release_tag"
   job2:
     runs-on: ubuntu-latest
     needs: job1

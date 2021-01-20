@@ -9,6 +9,8 @@ on:
       release_tag:
         description: 'Enter release tag number'
         required: true
+      release_type:
+        description: 'Enter release type (patch, minor, or major)'
       passcode:
         description: 'Enter passcode'
         required: true
@@ -42,7 +44,15 @@ jobs:
             echo 'Generating release notes and bumping version';
             git config --global user.email "noreply@remo.co"
             git config --global user.name "Release Notes"
-            npx standard-version --no-verify
+            if [[ ${{github.event.inputs.release_type}}  == 'patch' ]]; then
+              npx standard-version --no-verify --release-as patch
+            elif [[ ${{github.event.inputs.release_type}}  == 'minor' ]]; then
+              npx standard-version --no-verify --release-as minor
+            elif [[ ${{github.event.inputs.release_type}}  == 'major' ]]; then
+              npx standard-version --no-verify --release-as major
+            else
+              echo "Incorrect or empty release type. Received: ${{github.event.inputs.release_type}}"
+            fi
             git push --follow-tags origin master
             bumped_release_tag=$(grep -m 1 -E "version" package.json | cut -c 15- | rev | cut -c 3- | rev)
             echo "New Release Tag: $bumped_release_tag"

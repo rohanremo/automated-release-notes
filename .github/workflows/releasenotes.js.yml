@@ -16,8 +16,8 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 # 1. get current version from package.json
 # 2. check release_tag match
-# 3. if match, run release script and merge commit
-# 4. if no match, continue to PreBuildLive
+# 3. if no match, continue to next job
+# 4. if match, run release script and merge commit
 jobs:
   ChangeLogAlpha:
     runs-on: ubuntu-latest
@@ -36,7 +36,7 @@ jobs:
           current_release_tag=$(grep -m 1 -E "version" package.json | cut -c 15- | rev | cut -c 3- | rev)
           if [[ ${current_release_tag} != ${{github.event.inputs.release_tag}} ]]; then
             echo 'Proceeding with user selected release tag';
-            echo "::set-output name=number::$(echo ${{github.event.inputs.release_tag}})"
+            echo "##[set-output name=number;]$(echo ${{github.event.inputs.release_tag}})"
             exit 1
           else 
             echo 'Generating release notes and bumping version';
@@ -46,12 +46,14 @@ jobs:
             git push --follow-tags origin master
             bumped_release_tag=$(grep -m 1 -E "version" package.json | cut -c 15- | rev | cut -c 3- | rev)
             echo "New Release Tag: $bumped_release_tag"
-            echo "::set-output name=number::$(echo ${bumped_release_tag})"
+            echo "##[set-output name=number;]$(echo ${bumped_release_tag})"
           fi
       - name: Log output
         run: |
           echo "Logging prev step output"
           echo ${{ steps.release_tag.outputs.release_tag }}
+          rel_tag=${{ steps.release_tag.outputs.release_tag }}
+          echo "${rel_tag}"
   DeployLive:
     if: always()
     needs: ChangeLogAlpha
@@ -61,4 +63,3 @@ jobs:
           echo "Outputs:"
           echo ${{needs.ChangeLogAlpha.outputs.release_tag}}
           echo "$(echo ${{ needs.ChangeLogAlpha.outputs.release_tag }})"
-

@@ -27,7 +27,7 @@ jobs:
       # setting this flag so even if one job fails, others will continue
       fail-fast: false
     outputs:
-      release_tag: ${{ steps.release_tag_step.output.number }}
+      release_tag: ${{ steps.release_tag_step.outputs.number }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE with selected branch, so your job can access it
       - uses: actions/checkout@v2

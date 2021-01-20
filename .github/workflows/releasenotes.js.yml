@@ -67,8 +67,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "Outputs:"
+          echo "Outputs"
           echo ${{needs.ChangeLogAlpha.outputs.release_tag}}
           echo ${{ needs.ChangeLogAlpha.outputs.release_tag }}
-          echo "${{needs.ChangeLogAlpha.outputs.release_tag}}"
-          echo "${{needs.ChangeLogAlpha.outputs.release_tag}}"
+          echo "needs.ChangeLogAlpha.outputs.release_tag = ${{needs.ChangeLogAlpha.outputs.release_tag}}"
+          echo "needs.ChangeLogAlpha.steps.release_tag.outputs.release_tag = ${{needs.ChangeLogAlpha.steps.release_tag.outputs.release_tag}}"

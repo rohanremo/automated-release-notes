@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.3.0 (2021-01-20)
+
+
+### Product Updates
+
+* add fruit output test ([1143f9c](https://github.com/rohanremo/automated-release-notes/commit/1143f9c8ccee7b96ee726eb4bcadccb702e28270))
+
 ### 3.2.7 (2021-01-20)
 
 

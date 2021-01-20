@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.2.6 (2021-01-20)
+
+
+### Internal Updates
+
+* output syntax ([c026c2a](https://github.com/rohanremo/automated-release-notes/commit/c026c2a2d02d94e7063e9b22c7dae87f76a48afa))
+
 ### 3.2.5 (2021-01-20)
 
 ### 3.2.4 (2021-01-19)

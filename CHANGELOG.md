@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.6.2](https://github.com/rohanremo/automated-release-notes/compare/v3.6.1...v3.6.2) (2021-01-21)
+
+
+### Product Updates
+
+* add 5 ([efcffdd](https://github.com/rohanremo/automated-release-notes/commit/efcffddbab5c418cae892a2859a5e175b5fef5ed))
+* add 6 ([251027d](https://github.com/rohanremo/automated-release-notes/commit/251027d2c24af588b3006ec92b9e481ec14d3325))
+
+
+### Internal Updates
+
+* add 7 ([5aafcd4](https://github.com/rohanremo/automated-release-notes/commit/5aafcd4752e165fb906bdbbf3e8bddd647f32148))
+
 ### 3.6.1 (2021-01-20)
 
 ## 3.6.0 (2021-01-20)

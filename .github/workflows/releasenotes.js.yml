@@ -37,7 +37,7 @@ jobs:
           script: |
             const fs = require('fs');
             try {
-              const raw = fs.readFileSync('./package.json', 'utf8')
+              const raw = fs.readFileSync(`${process.env.GITHUB_WORKSPACE}/package.json`, 'utf8')
               const json = JSON.parse(raw)
               core.setOutput('version_number', json.version);
             } catch (e) {

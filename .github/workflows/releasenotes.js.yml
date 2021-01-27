@@ -50,12 +50,11 @@ jobs:
           if [[ ${{ steps.parse_json_step.outputs.version_number }} != ${{github.event.inputs.release_tag}} ]]; then
             echo 'Proceeding with user selected release tag';
             echo "##[set-output name=number;]$(echo ${{github.event.inputs.release_tag}})"
-            exit 1
           else 
             echo 'Generating release notes and bumping version';
             git config --global user.email "noreply@remo.co"
             git config --global user.name "Release Notes"
-            if [[ -z ${{github.event.inputs.release_type}} ]]; then
+            if [[ -z "${{github.event.inputs.release_type" }} ]]; then
               echo "No release type entered"
             elif [[ ${{github.event.inputs.release_type}}  == 'patch' ]]; then
               npx standard-version --no-verify --release-as patch

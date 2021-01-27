@@ -16,10 +16,6 @@ on:
         required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-# 1. get current version from package.json
-# 2. check release_tag match
-# 3. if no match, continue to next job
-# 4. if match, run release script and merge commit
 jobs:
   ChangeLogAlpha:
     runs-on: ubuntu-latest
@@ -28,15 +24,30 @@ jobs:
       fail-fast: false
     outputs:
       release_tag: ${{ steps.release_tag_step.outputs.number }}
+      version: ${{ steps.parse_json_step.outputs.version_number }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE with selected branch, so your job can access it
-      - uses: actions/checkout@v2
+      # - uses: actions/checkout@v2
+      #   with:
+      #     ref: master
+      - id: parse_json_step
+        uses: actions/github-script@v3.1.0
         with:
-          ref: master
+          github-token: '12345'
+          script: |
+            const fs = require('fs');
+            try {
+              const raw = fs.readFileSync('./package.json', 'utf8')
+              const json = JSON.parse(raw)
+              core.setOutput('version_number', json.version);
+            } catch (e) {
+              core.setOutput('version_number', '9.1.1');
+            }
+
+
       - id: release_tag_step
         run: |
-          current_release_tag=$(grep -m 1 -E "version" package.json | cut -c 15- | rev | cut -c 3- | rev)
-          if [[ ${current_release_tag} != ${{github.event.inputs.release_tag}} ]]; then
+          if [[ ${{ steps.parse_json_step.outputs.version_number }} != ${{github.event.inputs.release_tag}} ]]; then
             echo 'Proceeding with user selected release tag';
             echo "##[set-output name=number;]$(echo ${{github.event.inputs.release_tag}})"
             exit 1
@@ -44,7 +55,9 @@ jobs:
             echo 'Generating release notes and bumping version';
             git config --global user.email "noreply@remo.co"
             git config --global user.name "Release Notes"
-            if [[ ${{github.event.inputs.release_type}}  == 'patch' ]]; then
+            if [[ -z ${{github.event.inputs.release_type}} ]]; then
+              echo "No release type entered"
+            elif [[ ${{github.event.inputs.release_type}}  == 'patch' ]]; then
               npx standard-version --no-verify --release-as patch
             elif [[ ${{github.event.inputs.release_type}}  == 'minor' ]]; then
               npx standard-version --no-verify --release-as minor
@@ -55,13 +68,12 @@ jobs:
             fi
             git push --follow-tags origin master
             bumped_release_tag=$(grep -m 1 -E "version" package.json | cut -c 15- | rev | cut -c 3- | rev)
-            echo "New Release Tag: $bumped_release_tag"
             echo "::set-output name=number::$bumped_release_tag"
           fi
       - name: Log output
         run: |
           echo "Logging prev step output"
-          echo "The selected release_tag is ${{ steps.release_tag.outputs.release_tag }}"
+          echo "The selected release_tag is ${{ steps.release_tag_step.outputs.version_number }}"
   DeployLive:
     runs-on: ubuntu-latest
     needs: ChangeLogAlpha

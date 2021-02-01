@@ -27,9 +27,9 @@ jobs:
       version: ${{ steps.parse_json_step.outputs.version_number }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE with selected branch, so your job can access it
-      # - uses: actions/checkout@v2
-      #   with:
-      #     ref: master
+      - uses: actions/checkout@v2
+        with:
+          ref: master
       - id: parse_json_step
         uses: actions/github-script@v3.1.0
         with:
@@ -47,6 +47,8 @@ jobs:
 
       - id: release_tag_step
         run: |
+          echo "version_number: ${{ steps.parse_json_step.outputs.version_number }}"
+          echo "release_tag: ${{github.event.inputs.release_tag}}"
           if [[ ${{ steps.parse_json_step.outputs.version_number }} != ${{github.event.inputs.release_tag}} ]]; then
             echo 'Proceeding with user selected release tag';
             echo "##[set-output name=number;]$(echo ${{github.event.inputs.release_tag}})"

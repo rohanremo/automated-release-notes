@@ -56,7 +56,8 @@ jobs:
             echo 'Generating release notes and bumping version';
             git config --global user.email "noreply@remo.co"
             git config --global user.name "Release Notes"
-            if [[ "${{github.event.inputs.release_type}}" == ""]]; then
+            release_type=${{github.event.inputs.release_type}}
+            if [[ -z $release_type ]]; then
               echo "No release type entered";
               exit 1;
             elif [[ ${{github.event.inputs.release_type}} == 'patch' ]]; then

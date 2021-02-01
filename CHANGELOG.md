@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.7.1 (2021-02-01)
+
+
+### Internal Updates
+
+* store as tmp var before null check ([2ea1b88](https://github.com/rohanremo/automated-release-notes/commit/2ea1b885acbd7cdffca605e3445dba1f36f5962c))
+
 ## 3.7.0 (2021-02-01)
 
 

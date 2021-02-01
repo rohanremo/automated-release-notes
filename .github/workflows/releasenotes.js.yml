@@ -47,6 +47,8 @@ jobs:
 
       - id: release_tag_step
         run: |
+          echo "version_number: ${{ steps.parse_json_step.outputs.version_number }}"
+          echo "release_tag: ${{github.event.inputs.release_tag}}"
           if [[ ${{ steps.parse_json_step.outputs.version_number }} != ${{github.event.inputs.release_tag}} ]]; then
             echo 'Proceeding with user selected release tag';
             echo "##[set-output name=number;]$(echo ${{github.event.inputs.release_tag}})"

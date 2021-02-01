@@ -27,9 +27,9 @@ jobs:
       version: ${{ steps.parse_json_step.outputs.version_number }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE with selected branch, so your job can access it
-      # - uses: actions/checkout@v2
-      #   with:
-      #     ref: master
+      - uses: actions/checkout@v2
+        with:
+          ref: master
       - id: parse_json_step
         uses: actions/github-script@v3.1.0
         with:
@@ -54,8 +54,9 @@ jobs:
             echo 'Generating release notes and bumping version';
             git config --global user.email "noreply@remo.co"
             git config --global user.name "Release Notes"
-            if [[ -z "${{github.event.inputs.release_type" }} ]]; then
-              echo "No release type entered"
+            if [[ -z "${{github.event.inputs.release_type}}" ]]; then
+              echo "No release type entered";
+              exit 1;
             elif [[ ${{github.event.inputs.release_type}}  == 'patch' ]]; then
               npx standard-version --no-verify --release-as patch
             elif [[ ${{github.event.inputs.release_type}}  == 'minor' ]]; then

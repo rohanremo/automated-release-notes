@@ -56,10 +56,11 @@ jobs:
             echo 'Generating release notes and bumping version';
             git config --global user.email "noreply@remo.co"
             git config --global user.name "Release Notes"
-            if [[ -z "${{github.event.inputs.release_type}}" ]]; then
+            [ -z "${{github.event.inputs.release_type}}" ] && {
               echo "No release type entered";
               exit 1;
-            elif [[ ${{github.event.inputs.release_type}}  == 'patch' ]]; then
+            };
+            if [[ ${{github.event.inputs.release_type}}  == 'patch' ]]; then
               npx standard-version --no-verify --release-as patch
             elif [[ ${{github.event.inputs.release_type}}  == 'minor' ]]; then
               npx standard-version --no-verify --release-as minor
@@ -73,11 +74,11 @@ jobs:
             echo "::set-output name=number::$bumped_release_tag"
           fi
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
-          branch: master
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
+      #     branch: master
       - name: Log output
         run: |
           echo "Logging prev step output"

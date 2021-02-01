@@ -33,7 +33,7 @@ jobs:
       - id: parse_json_step
         uses: actions/github-script@v3.1.0
         with:
-          github-token: '12345'
+          github-token: '1234'
           script: |
             const fs = require('fs');
             try {
@@ -41,7 +41,7 @@ jobs:
               const json = JSON.parse(raw)
               core.setOutput('version_number', json.version);
             } catch (e) {
-              core.setOutput('version_number', '9.1.1');
+              core.setOutput('version_number', e.toString());
             }
 
 
@@ -56,11 +56,10 @@ jobs:
             echo 'Generating release notes and bumping version';
             git config --global user.email "noreply@remo.co"
             git config --global user.name "Release Notes"
-            [ -z "${{github.event.inputs.release_type}}" ] && {
+            if [[ "${{github.event.inputs.release_type}}" == ""]]; then
               echo "No release type entered";
               exit 1;
-            };
-            if [[ ${{github.event.inputs.release_type}}  == 'patch' ]]; then
+            elif [[ ${{github.event.inputs.release_type}} == 'patch' ]]; then
               npx standard-version --no-verify --release-as patch
             elif [[ ${{github.event.inputs.release_type}}  == 'minor' ]]; then
               npx standard-version --no-verify --release-as minor

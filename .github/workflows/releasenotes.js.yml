@@ -43,8 +43,6 @@ jobs:
             } catch (e) {
               core.setOutput('version_number', e.toString());
             }
-
-
       - id: release_tag_step
         run: |
           echo "version_number: ${{ steps.parse_json_step.outputs.version_number }}"
@@ -57,7 +55,7 @@ jobs:
             git config --global user.email "noreply@remo.co"
             git config --global user.name "Release Notes"
             release_type=${{github.event.inputs.release_type}}
-            if [[ -z $release_type ]]; then
+            if [[ -z "$release_type" ]]; then
               echo "No release type entered";
               exit 1;
             elif [[ ${{github.event.inputs.release_type}} == 'patch' ]]; then
@@ -73,7 +71,6 @@ jobs:
             bumped_release_tag=$(grep -m 1 -E "version" package.json | cut -c 15- | rev | cut -c 3- | rev)
             echo "::set-output name=number::$bumped_release_tag"
           fi
-
       # - name: Push changes
       #   uses: ad-m/github-push-action@master
       #   with:

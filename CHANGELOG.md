@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.6.3 (2021-02-01)
+
+
+### Internal Updates
+
+* add push script ([494dd34](https://github.com/rohanremo/automated-release-notes/commit/494dd347377d1e2e3b912e2906b044a1e604ad9f))
+
 ### [3.6.2](https://github.com/rohanremo/automated-release-notes/compare/v3.6.1...v3.6.2) (2021-01-21)
 
 

@@ -31,6 +31,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE with selected branch, so your job can access it
       - uses: actions/checkout@v2
         with:
+          token: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
           ref: master
       - id: parse_json_step
         uses: actions/github-script@v3.1.0
@@ -71,18 +72,18 @@ jobs:
               echo "Error: Either select a valid release type, or enter a different release tag"
               exit 1;
             fi
-            git push --follow-tags origin master
             bumped_release_tag=$(grep -m 1 -E "version" package.json | cut -c 15- | rev | cut -c 3- | rev)
             echo "::set-output name=number::$bumped_release_tag"
             echo "::set-output name=is_updated::true"
           fi
           echo "printing directory list (first)"
           ls -la
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     github_token: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
-      #     branch: master
+      # git push --follow-tags origin master
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
+          branch: master
       - name: Log output
         run: |
           echo "Logging prev step output"

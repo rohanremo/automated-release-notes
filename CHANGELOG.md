@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.7.4 (2021-02-02)
+
+
+### Internal Updates
+
+* use private repo access token ([d9a8038](https://github.com/rohanremo/automated-release-notes/commit/d9a80385f94b478c5b23e38a6fd05a707bde90ba))
+
 ### 3.7.3 (2021-02-02)
 
 ### 3.7.2 (2021-02-02)

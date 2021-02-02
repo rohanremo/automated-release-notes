@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.7.2 (2021-02-02)
+
+
+### Internal Updates
+
+* add is_updated check for slack notification ([43bc291](https://github.com/rohanremo/automated-release-notes/commit/43bc291cc8d1aed57d7adf7a2edc036973b08228))
+
 ### 3.7.1 (2021-02-01)
 
 

@@ -87,7 +87,7 @@ jobs:
         run: |
           echo "Logging prev step output"
           echo "The selected release_tag is ${{ steps.release_tag_step.outputs.version_number }}"
-          echo "is_changelog_updated: ${{ steps.release_tag_step.outputs.is_changelog_updated }}"
+          echo "is_changelog_updated: ${{ steps.release_tag_step.outputs.is_updated }}"
           ls -la
   DeployLive:
     runs-on: ubuntu-latest

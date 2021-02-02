@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.7.2 (2021-02-02)
+
+
+### Internal Updates
+
+* test working directory changes between steps ([9f61311](https://github.com/rohanremo/automated-release-notes/commit/9f6131182ddaeaba7d75c0bde6651a5b6fcc8f79))
+
 ### 3.7.1 (2021-02-01)
 
 

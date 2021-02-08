@@ -1,0 +1,13 @@
+name: 'PR Title Checker'
+on: 
+  pull_request:
+    types: [edited, opened, synchronize, reopened]
+
+jobs:
+  title-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: naveenk1223/action-pr-title@master
+        with:
+          allowed_prefixes: 'build,chore,ci,docs,feat,fix,perf,refactor,revert,style,test' # title should match conventional git commit format
+          prefix_case_sensitive: true # case sensitive to match changelog script

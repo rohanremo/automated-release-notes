@@ -1,13 +1,15 @@
 name: 'PR Title Checker'
-on: 
-  pull_request:
-    types: [edited, opened, synchronize, reopened]
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
 
 jobs:
-  title-check:
+  main:
     runs-on: ubuntu-latest
     steps:
-      - uses: naveenk1223/action-pr-title@master
-        with:
-          allowed_prefixes: 'build,chore,ci,docs,feat,fix,perf,refactor,revert,style,test' # title should match conventional git commit format
-          prefix_case_sensitive: true # case sensitive to match changelog script
+      - uses: amannn/action-semantic-pull-request@v3.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
